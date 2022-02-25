@@ -22,49 +22,49 @@ include('header.php');
         <!-- Navigation-->
        
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="site-heading">
-                            <h1>Posted Blogs</h1>
-                            <span class="subheading">A Blog Description</span>
-                        </div>
+    <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Posted Blogs</h1>
+                        <span class="subheading">A Blog Description</span>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- Main Content-->
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <!-- Post preview-->
-                <?php
-                        $result=mysqli_query($con,"select * from post order by title asc");
-                        $rowc=mysqli_num_rows($result);
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- Post preview-->
+            <?php
+                $result=mysqli_query($con,"select * from post order by title asc");
+                $rowc=mysqli_num_rows($result);
+            ?>
+            <?php
+                for($i=1;$i<=$rowc;$i++){
+
+                $row=mysqli_fetch_array($result);
                 ?>
-                <?php
-                        for($i=1;$i<=$rowc;$i++){
 
-                        $row=mysqli_fetch_array($result);
-                        ?>
-
-                        <div class="post-preview">
-                        <a style="  color: black; text-decoration: none;" href="post.php?sid=<?php echo $row["post_id"] ?>"> 
-                            <h2 class="post-title"><?php echo $row['title'];?></h2>
-                            <h3 class="post-subtitle"><?php echo $row['shortdes'];?></h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!"><?php echo $row['auth_name'];?></a> ON
-                            <?php echo $row['date'];?>
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <?php
-                        }
-                    ?>
+                <div class="post-preview">
+                <a style="  color: black; text-decoration: none;" href="post.php?sid=<?php echo $row["post_id"] ?>"> 
+                    <h2 class="post-title"><?php echo $row['title'];?></h2>
+                    <h3 class="post-subtitle"><?php echo $row['shortdes'];?></h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!"><?php echo $row['auth_name'];?></a> ON
+                    <?php echo $row['date'];?>
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <?php
+                }
+            ?>
                     
         <footer class="border-top">
             <div class="container px-4 px-lg-5">
