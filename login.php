@@ -21,9 +21,9 @@
             $verify=password_verify($password,$row['password']);
             $_SESSION['role']= $row['role'];
             if ($verify) {
+                $_SESSION['EMAIL']=$row['email'];
                 if ($row['role']=="user"){
                     $_SESSION['LOGIN']=true;
-                    $_SESSION['EMAIL']=$row['email'];
                     $_SESSION['ID']=$row['auth_id'];
                     header('location:dashboard.php');
                 } elseif ($row['role']=="admin"){
